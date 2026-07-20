@@ -1,5 +1,5 @@
 {
-    "target_song": "rakuraku_romanized", // Name of the song file, it must be located in the songs folder. Do not include the extension. Example: "misery", "rakuraku_romanized"
+    "target_song": "misery", // Name of the song file, it must be located in the songs folder. Do not include the extension. Example: "misery", "rakuraku_romanized"
     "activity_check_delay": 1, // How often should the script check your status. Note: this has nothing to do with updating your status, only checking
     "lyric_change_check_delay": 0.1, // How often should the script check if the lyric has changed. Note: this won't update your status everytime, only when the lyric actually changes
     "reset_status_on_no_lyric": true, // Enable to reset the status to the default one when no lyric is active

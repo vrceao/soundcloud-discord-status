@@ -1,7 +1,7 @@
 // https://soundcloud.com/justtextreme/misery-best-part
 // Creator: Kuki
 {
-    "target_song": "misery. (best part)", // The song name on SoundCloud. Note: It is recommended to copy the name from your discord activity in dev tools instead of taking it from the website because PreMiD/Discord sometimes changes the string
+    "target_title": "misery. (best part)", // The song name on SoundCloud. Note: It is recommended to copy the name from your discord activity in dev tools instead of taking it from the website because PreMiD/Discord sometimes changes the string
     // Lyrics of the song to display in the status, first value is the timestamp in seconds, second value is the lyric
     "lyrics": [
         [8, "I miss that kind of misery"],

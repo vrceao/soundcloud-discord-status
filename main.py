@@ -105,8 +105,7 @@ async def display_lyrics():
             if not new_lyric == current_lyric:
                 current_lyric = new_lyric
                 await update_status()
-        else:
-            print("Not detected!")
+
         await asyncio.sleep(lyric_change_check_delay)
         current_time += lyric_change_check_delay
 
@@ -114,13 +113,22 @@ async def check_activity():
     global current_time
     global lyrics_displaying
 
+    soundcloud_found = False
+
     for activity in bot.activities:
         if activity.name == "SoundCloud":
+            soundcloud_found = True
             if activity.details == target_title:
                 current_time = time.time() - activity.timestamps.start.timestamp()
                 if not lyrics_displaying:
+                    print("Song detected, displaying lyrics now")
                     lyrics_displaying = True
                 return
+            else:
+                print("You're not listening to the target song")
+
+    if not soundcloud_found:
+        print("SoundCloud isn't on your Discord activity")
 
     if not lyrics_displaying:
         return
@@ -140,6 +148,7 @@ async def on_ready():
 
 def on_exit(signum, frame):
     if not default_status_displaying and reset_status_on_exit:
+        print("Exiting")
         reset_status()
     sys.exit(0)
 
