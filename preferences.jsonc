@@ -1,0 +1,34 @@
+{
+    "check_delay": 1, // How often should the script check your status. Note: this has nothing to do with updating your status, only checking
+    "log_changes": true, // Enable to show the status changes in the console
+    "target_song": "misery. (best part)", // The song name on SoundCloud (not artist)
+    "lyric_format": "$LYRIC$ ♡.ᐟ⋆", // Format of your status, $LYRIC$ is the current line
+    // The emoji displayed in the status
+    "status_emoji": {
+        "name": "koishirocking",
+        "id": 940427023845818388
+    },
+    // This status will be set when there's no lyric or the script ends
+    "default_status": {
+        "text": "Waiting for 𝐲𝐨𝐮 ♡.ᐟ⋆",
+        "emoji": {
+            "name": "koishirocking",
+            "id": 940427023845818388
+        }
+    },
+    // Lyrics of the song to display in the status, first value is the timestamp in seconds, second value is the lyric
+    "lyrics": [
+        [8, "I miss that kind of misery"],
+        [9.6, "The kind where you are nice to me"],
+        [11.7, "But only in the evening"],
+        [13.4, "So I ask, am I just dreaming?"],
+        [15.6, "I love you so much that it's dripping"],
+        [18, "Dripping from my arms and such"],
+        [19.8, "I'm sorry, I know I'm too much"],
+        [22, "To love, to trust, I'm nothing, but"],
+        [24, "I miss that kind of misery"],
+        [26, "The kind where you are nice to me"],
+        [27.9, "But only in the evening"],
+        [29.5, "So I ask, am I just dreaming?"]
+    ]
+}
