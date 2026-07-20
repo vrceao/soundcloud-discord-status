@@ -1,7 +1,11 @@
 {
-    "check_delay": 1, // How often should the script check your status. Note: this has nothing to do with updating your status, only checking
+    "target_song": "rakuraku_romanized", // Name of the song file, it must be located in the songs folder. Do not include the extension. Example: "misery", "rakuraku_romanized"
+    "activity_check_delay": 1, // How often should the script check your status. Note: this has nothing to do with updating your status, only checking
+    "lyric_change_check_delay": 0.1, // How often should the script check if the lyric has changed. Note: this won't update your status everytime, only when the lyric actually changes
+    "reset_status_on_no_lyric": true, // Enable to reset the status to the default one when no lyric is active
+    "reset_status_on_inactive": true, // Enable to reset the status to the default one when the activity ends
+    "reset_status_on_exit": true, // Enable to reset the status to the default one after exiting
     "log_changes": true, // Enable to show the status changes in the console
-    "target_song": "misery. (best part)", // The song name on SoundCloud (not artist)
     "lyric_format": "$LYRIC$ ♡.ᐟ⋆", // Format of your status, $LYRIC$ is the current line
     // The emoji displayed in the status
     "status_emoji": {
@@ -15,20 +19,15 @@
             "name": "koishirocking",
             "id": 940427023845818388
         }
-    },
-    // Lyrics of the song to display in the status, first value is the timestamp in seconds, second value is the lyric
-    "lyrics": [
-        [8, "I miss that kind of misery"],
-        [9.6, "The kind where you are nice to me"],
-        [11.7, "But only in the evening"],
-        [13.4, "So I ask, am I just dreaming?"],
-        [15.6, "I love you so much that it's dripping"],
-        [18, "Dripping from my arms and such"],
-        [19.8, "I'm sorry, I know I'm too much"],
-        [22, "To love, to trust, I'm nothing, but"],
-        [24, "I miss that kind of misery"],
-        [26, "The kind where you are nice to me"],
-        [27.9, "But only in the evening"],
-        [29.5, "So I ask, am I just dreaming?"]
-    ]
+    }
+    /*
+    No emoji / Built-in emoji / Custom emoji (nitro)
+    No emoji       - Leave "name" empty and ignore the ID
+    Built-in emoji - Put a unicode emoji in "name" and ignore the ID
+    Custom emoji   - Put the emoji name in "name" and it's id in "id"
+
+    How to get the emoji id? (Only if using a custom nitro emote)
+    Insert a backslash "\" in the chatbox and follow it by the emote (no space), then send the message, you should see something like "<a:koishirocking:940427023845818388>" or "<:youmu_stare:1046229645902753852>"
+    Ignore the "a:"
+    */
 }

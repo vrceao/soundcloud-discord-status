@@ -18,13 +18,26 @@ bot = commands.Bot(command_prefix="!", self_bot=True)
 with open("preferences.jsonc", "r", encoding="utf-8") as file:
     preferences = json5.load(file)
 
-check_delay = preferences["check_delay"]
-log_changes = preferences["log_changes"]
-lyrics = preferences["lyrics"]
 target_song = preferences["target_song"]
+path = f"songs/{target_song}.jsonc"
+if not os.path.exists(path):
+    print(f"{path} not found")
+    sys.exit(0)
+with open(path, "r", encoding="utf-8") as file:
+    song = json5.load(file)
+
+activity_check_delay = preferences["activity_check_delay"]
+lyric_change_check_delay = preferences["lyric_change_check_delay"]
+log_changes = preferences["log_changes"]
 lyric_format = preferences["lyric_format"]
 status_emoji = preferences["status_emoji"]
 default_status = preferences["default_status"]
+reset_status_on_no_lyric = preferences["reset_status_on_no_lyric"]
+reset_status_on_inactive = preferences["reset_status_on_inactive"]
+reset_status_on_exit = preferences["reset_status_on_exit"]
+
+target_title = song["target_title"]
+lyrics = song["lyrics"]
 
 current_time = 0
 lyrics_displaying = False
@@ -55,7 +68,7 @@ async def update_status():
 
 def reset_status():
     global default_status_displaying
-
+    
     default_status_displaying = True
 
     requests.patch("https://discord.com/api/v9/users/@me/settings", headers={
@@ -69,7 +82,8 @@ def reset_status():
         }
     })
 
-    print(f"Updated status with: {default_status['text']}")
+    if log_changes:
+        print(f"Updated status with: {default_status['text']}")
 
 async def display_lyrics():
     global current_time
@@ -86,15 +100,15 @@ async def display_lyrics():
                     new_lyric = lyrics[i][1]
                     break
             if new_lyric == None:
-                if not default_status_displaying:
+                if not default_status_displaying and reset_status_on_no_lyric:
                     reset_status()
             if not new_lyric == current_lyric:
                 current_lyric = new_lyric
                 await update_status()
         else:
-            print("off")
-        await asyncio.sleep(.1)
-        current_time += .1
+            print("Not detected!")
+        await asyncio.sleep(lyric_change_check_delay)
+        current_time += lyric_change_check_delay
 
 async def check_activity():
     global current_time
@@ -102,7 +116,7 @@ async def check_activity():
 
     for activity in bot.activities:
         if activity.name == "SoundCloud":
-            if activity.details == target_song:
+            if activity.details == target_title:
                 current_time = time.time() - activity.timestamps.start.timestamp()
                 if not lyrics_displaying:
                     lyrics_displaying = True
@@ -112,7 +126,9 @@ async def check_activity():
         return
 
     lyrics_displaying = False
-    reset_status()
+
+    if reset_status_on_inactive:
+        reset_status()
 
 @bot.event
 async def on_ready():
@@ -120,10 +136,10 @@ async def on_ready():
 
     while True:
         await check_activity()
-        await asyncio.sleep(check_delay)
+        await asyncio.sleep(activity_check_delay)
 
 def on_exit(signum, frame):
-    if not default_status_displaying:
+    if not default_status_displaying and reset_status_on_exit:
         reset_status()
     sys.exit(0)
 

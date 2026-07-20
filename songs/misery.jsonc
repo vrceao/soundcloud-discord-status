@@ -1,0 +1,20 @@
+// https://soundcloud.com/justtextreme/misery-best-part
+// Creator: Kuki
+{
+    "target_song": "misery. (best part)", // The song name on SoundCloud. Note: It is recommended to copy the name from your discord activity in dev tools instead of taking it from the website because PreMiD/Discord sometimes changes the string
+    // Lyrics of the song to display in the status, first value is the timestamp in seconds, second value is the lyric
+    "lyrics": [
+        [8, "I miss that kind of misery"],
+        [9.6, "The kind where you are nice to me"],
+        [11.7, "But only in the evening"],
+        [13.4, "So I ask, am I just dreaming?"],
+        [15.6, "I love you so much that it's dripping"],
+        [18, "Dripping from my arms and such"],
+        [19.8, "I'm sorry, I know I'm too much"],
+        [22, "To love, to trust, I'm nothing, but"],
+        [24, "I miss that kind of misery"],
+        [26, "The kind where you are nice to me"],
+        [27.9, "But only in the evening"],
+        [29.5, "So I ask, am I just dreaming?"]
+    ]
+}
