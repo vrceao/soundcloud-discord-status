@@ -3,13 +3,37 @@
 {
     "target_title": "らくらく安楽死(Rakuraku annrakushi)short ver. - 欲音ルコ♂(Yokune Ruko♂)",
     "lyrics": [
-        [3.1, "rakuraku okiraku anrakushi"],
-        [5.9, "jisatsu wa kanben kurushii shi"],
-        [9.7, "hakudaku kairaku anzenshi"],
-        [12.9, "kurakura kurayami fukujoushi"],
-        [16.6, "wakuwaku gokuraku anrakushi"],
-        [19.4, "itazura dannen satsujinki"],
-        [23.5, "ningen de kitara mata oide"],
-        [26.7, "zannen, gainen, kishi kannen!"]
+        {
+            "timestamp": [3.1, -1],
+            "text": "rakuraku okiraku anrakushi"
+        },
+        {
+            "timestamp": [5.9, -1],
+            "text": "jisatsu wa kanben kurushii shi"
+        },
+        {
+            "timestamp": [9.7, -1],
+            "text": "hakudaku kairaku anzenshi"
+        },
+        {
+            "timestamp": [12.9, -1],
+            "text": "kurakura kurayami fukujoushi"
+        },
+        {
+            "timestamp": [16.6, -1],
+            "text": "wakuwaku gokuraku anrakushi"
+        },
+        {
+            "timestamp": [19.4, -1],
+            "text": "itazura dannen satsujinki"
+        },
+        {
+            "timestamp": [23.5, -1],
+            "text": "ningen de kitara mata oide"
+        },
+        {
+            "timestamp": [26.7, -1],
+            "text": "zannen, gainen, kishi kannen!"
+        }
     ]
 }

@@ -39,6 +39,10 @@ reset_status_on_exit = preferences["reset_status_on_exit"]
 target_title = song["target_title"]
 lyrics = song["lyrics"]
 
+for i in range(len(lyrics) - 1):
+    if not i == len(lyrics) - 1 and lyrics[i]["timestamp"][1] == -1:
+        lyrics[i]["timestamp"][1] = lyrics[i + 1]["timestamp"][0]
+
 current_time = 0
 lyrics_displaying = False
 current_lyric = None
@@ -92,12 +96,12 @@ async def display_lyrics():
     while True:
         if lyrics_displaying:
             new_lyric = None
-            for i in range(len(lyrics) - 1):
-                if current_time >= lyrics[-1][0]:
-                    new_lyric = lyrics[-1][1]
-                    break
-                elif current_time >= lyrics[i][0] and current_time < lyrics[i + 1][0]:
-                    new_lyric = lyrics[i][1]
+            for i in range(len(lyrics)):
+                if lyrics[i]["timestamp"][1] == -1:
+                    if current_time >= lyrics[i]["timestamp"][0]:
+                        new_lyric = lyrics[i]["text"]
+                elif current_time >= lyrics[i]["timestamp"][0] and current_time < lyrics[i]["timestamp"][1]:
+                    new_lyric = lyrics[i]["text"]
                     break
             if new_lyric == None:
                 if not default_status_displaying and reset_status_on_no_lyric:
